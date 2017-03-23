@@ -17,26 +17,28 @@ export const allUsers = gql`
         }
     }`;
 
-export const getUserById = gql`query getUserByUid($u_id: Int!) {
-    user(uid: $u_id) {
-      uid
-      name
-    }
-  }`;
-
-export const getUserByIdAllFields = gql`query getUserByUid($u_id: Int!) {
-    user(uid: $u_id) {
-      uid
-      name
-      firstname
-      lastname
-      position
-      phones
-      city {
-        tid
+export const getUserById = gql`
+    query getUserById($u_id: Int!) {
+      user(uid: $u_id) {
+        uid
         name
-        fias_aoguid
       }
-      mail
-    }
-  }`;
+    }`;
+
+export const getUserByIdAllFields = gql`
+    query getUserByIdAllFields($u_id: Int!) {
+      user(uid: $u_id) {
+        uid
+        name
+        firstname
+        lastname
+        position
+        phones
+        city {
+          tid
+          name
+          fias_aoguid
+        }
+        mail
+      }
+    }`;
