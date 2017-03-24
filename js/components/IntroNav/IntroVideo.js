@@ -20,7 +20,7 @@ export default class IntroVideo extends Component {
     let { paused, uri, text, rightButtonNavigateTo, rightButtonText, leftButtonVisible, muted, highlightedText} = this.props
 
     let opacity = (rightButtonText) ? {opacity:1}: {};
-    console.log('~~~~~~',uri);
+    // console.log('~~~~~~',uri);
     return (
       <View style={styles.view}>
         {/*<Video source={uri}*/}

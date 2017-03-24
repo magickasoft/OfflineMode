@@ -1,8 +1,3 @@
-/**
- * Created by konstantin on 27.07.16.
- */
-
-
 import React, { Component } from 'react';
 import {
     StyleSheet,

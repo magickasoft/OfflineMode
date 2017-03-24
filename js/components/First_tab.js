@@ -173,7 +173,7 @@ export default class Feed extends React.Component {
 
     componentWillMount() {
         const { navigationState } = this.props;
-        console.log('will mount', navigationState)
+        // console.log('will mount', navigationState)
         this.setState({route: navigationState.routes[navigationState.routes.length-1] })
     }
 

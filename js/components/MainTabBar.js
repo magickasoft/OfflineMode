@@ -170,7 +170,7 @@ export default class MainTabBar extends React.Component {
             }
         }
         // Mixpanel.trackWithProperties('Change Tab', { name: tabName })
-        console.log('Change Tab', { name: tabName });
+        // console.log('Change Tab', { name: tabName });
         if (tabName == POST_TAB) {
             if (fileUpload.inProgress) {
                 return;

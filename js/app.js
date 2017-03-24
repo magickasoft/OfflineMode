@@ -134,7 +134,7 @@ class App extends React.Component {
         } = this.props;
 
         if (!autoRehydrated) {
-            return (<View></View>)
+            //return (<View></View>)
         }
         // console.log('~~~~App props', this.props);
         return (

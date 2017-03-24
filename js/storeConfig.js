@@ -22,7 +22,9 @@ const store = createStore(rootReducer, {},
     ));
 persistStore(store, {
     storage: AsyncStorage,
-    whitelist: ['apollo','autoRehydrated','clapitAccountData','drawer', /*'navigationState',*/ 'newNotifications', 'preferences',]
+    //debounce: 50,
+    whitelist: [/*'apollo',*/ 'autoRehydrated','clapitAccountData','drawer', /*'navigationState',*/ 'newNotifications', 'preferences',],
+    blacklist: [ 'navigationState' ],
 }).purge([]);
 
 export default store;

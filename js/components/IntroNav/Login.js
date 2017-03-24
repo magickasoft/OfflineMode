@@ -257,7 +257,7 @@ export default class Login extends Component {
 
     _onPressBack() {
         let { navigator, parentNavigator, parentPop } = this.props
-        console.log('~~~~~~~Login', this.props);
+        // console.log('~~~~~~~Login', this.props);
         parentNavigator.pop();
         // navigator.pop()
         // if (parentPop){

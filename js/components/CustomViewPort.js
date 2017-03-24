@@ -7,7 +7,7 @@ class CustomViewPort extends React.Component {
     
     componentWillMount() {
         const { navigationState } = this.props;
-        console.log('viewport will mount', navigationState)
+        // console.log('viewport will mount', navigationState)
         this.setState({ route: navigationState.routes[navigationState.routes.length - 1] })
     }
 

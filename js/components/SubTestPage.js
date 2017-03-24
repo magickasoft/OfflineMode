@@ -213,7 +213,7 @@ export default class SubTestPage extends Component {
             questionText = 'Already have an account? '
         }
         const { data } = this.props;
-        console.log('~~~ data',data);
+        // console.log('~~~ data',data);
         return (
             <View style={styles.view}>
                 <NavigationBar
@@ -268,7 +268,7 @@ export default class SubTestPage extends Component {
 
     _onPressBack() {
         let { navigator, parentNavigator, parentPop } = this.props
-        console.log('~~~~~~~Login', this.props);
+        // console.log('~~~~~~~Login', this.props);
         parentNavigator.pop();
         // navigator.pop()
         // if (parentPop){

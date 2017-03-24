@@ -6,6 +6,7 @@ import * as drawerActions from '../actions/drawer'
 import * as navigationActions  from '../actions/navigation'
 
 function stateToProps(state) {
+
     const { navigationState, drawer } = state;
     return { navigationState, drawer };
 }
@@ -16,4 +17,5 @@ function dispatchToProps(dispatch) {
     return bindActionCreators(actions, dispatch)
 }
 
-export default connect(stateToProps, dispatchToProps)(ControlPanel)
+// export default connect(stateToProps, dispatchToProps)(ControlPanel)
+export default ControlPanel

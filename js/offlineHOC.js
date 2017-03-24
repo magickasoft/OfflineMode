@@ -25,6 +25,8 @@ function offlineHOC(query, queryOptions ) {
 
     return function offlineFilterWrapper( WrappedComponentWithoutQuery ) {
 
+        const WrappedComponentGraphQl = graphql(query, queryOptions)(WrappedComponentWithoutQuery);
+
         class offlineFilter extends Component {
             constructor(props) {
                 super(props);
@@ -67,7 +69,7 @@ function offlineHOC(query, queryOptions ) {
 
                 if (this.determineConnect(netinfo.type)) {
                     // console.log('~~~~~~ online');
-                    const WrappedComponentGraphQl = graphql(query, queryOptions)(WrappedComponentWithoutQuery);
+
                     toRender =  (
                         <WrappedComponentGraphQl {...this.props}/>
                     );

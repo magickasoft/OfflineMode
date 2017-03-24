@@ -231,7 +231,7 @@ export default class TestPage extends Component {
             questionText = 'Already have an account? '
         }
         const { data } = this.props;
-        console.log('~~~ data',data);
+        // console.log('~~~ data',data);
         return (
             <View style={styles.view}>
                 <NavigationBar

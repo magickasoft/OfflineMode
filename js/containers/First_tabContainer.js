@@ -13,7 +13,10 @@ const  First_tabOfflineHOC = offlineHOC( allUsers, {
     options: {
     //fetchPolicy: 'cache-and-network',
 }})(First_tab);
-
+// const First_tabGraphQl = graphql(allUsers, {
+//     options: {
+//         //fetchPolicy: 'cache-and-network',
+//     }})(First_tab);
 function stateToProps(state) {
 
     const { clapitAccountData, navigationState, drawer } = state;

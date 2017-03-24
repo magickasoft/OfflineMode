@@ -403,9 +403,10 @@ class FeedItem extends React.Component {
     }
     onButtonPress () {
         const { data } = this.props;
-        console.log('~~~~~ onButtonPress FreedItem', this.props);
+        // console.log('~~~~~ onButtonPress FreedItem', this.props);
+        this.onPushPage({ name: 'TestPageContainer', props: {uid: parseInt(1)}})
         //apolloClient.resetStore();
-        data.refetch();
+        //data.refetch();
     }
     onPushPage (object) {
 
@@ -417,7 +418,7 @@ class FeedItem extends React.Component {
 
         const { data } = this.props;
         //const { loading, usersList } = data;
-        // console.log('FEEDITEM~~~data', this.props)
+        // console.log('FEEDITEM~~~data', data)
         return (
           <View style={styles.view}>
             <NavigationBar
