@@ -18,8 +18,8 @@ import { graphql } from 'react-apollo'
 // import { allUsers } from './queries/index'
 
 import Login from './components/IntroNav/Login'
-// import TestPageContainer from './containers/TestPageContainer'
-// import SubTestPageContainer from './containers/SubTestPageContainer'
+import TestPageContainer from './containers/TestPageContainer'
+import SubTestPageContainer from './containers/SubTestPageContainer'
 import MainContainer from './containers/MainContainer'
 import IntroNavContainer from './containers/IntroNavContainer'
 
@@ -108,12 +108,12 @@ class App extends React.Component {
             case 'Login':
                 return (
                     <Login signUp completeNavigationState={completeNavigationState} parentNavigator={this.navigator}/>);
-            // case 'TestPageContainer':
-            //     return (
-            //         <TestPageContainer {... route.props} signUp completeNavigationState={completeNavigationState} parentNavigator={this.navigator}/>);
-            // case 'SubTestPageContainer':
-            //     return (
-            //         <SubTestPageContainer {... route.props} signUp completeNavigationState={completeNavigationState} parentNavigator={this.navigator}/>);
+            case 'TestPageContainer':
+                return (
+                    <TestPageContainer {... route.props} signUp completeNavigationState={completeNavigationState} parentNavigator={this.navigator}/>);
+            case 'SubTestPageContainer':
+                return (
+                    <SubTestPageContainer {... route.props} signUp completeNavigationState={completeNavigationState} parentNavigator={this.navigator}/>);
         }
     }
     componentWillUnmount() {
@@ -136,7 +136,7 @@ class App extends React.Component {
         if (!autoRehydrated) {
             return (<View></View>)
         }
-        console.log('~~~~App props', this.props);
+        // console.log('~~~~App props', this.props);
         return (
             <CustomNavigationCardStack
                 navigationState={navigationState}

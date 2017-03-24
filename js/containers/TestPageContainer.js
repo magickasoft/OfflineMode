@@ -4,16 +4,16 @@ import { graphql, compose } from 'react-apollo'
 
 import TestPage from '../components/TestPage'
 import offlineHOC from '../offlineHOC'
-// import { getUserById} from '../queries/index'
+import { getUserById} from '../queries/index'
 
 import * as drawerActions from '../actions/drawer'
 import * as navigationActions  from '../actions/navigation'
 
-// const  TestPageOfflineHOC = offlineHOC( getUserById, {
-//     options: ({ u_id }) => {
-//         return { variables: { u_id: u_id } }
-//     }
-// })(TestPage);
+const  TestPageOfflineHOC = offlineHOC( getUserById, {
+    options: ({ uid }) => {
+        return { variables: { uid: uid } }
+    }
+})(TestPage);
 
 function stateToProps(state) {
     const { navigationState, drawer } = state;
@@ -26,4 +26,4 @@ function dispatchToProps(dispatch) {
     return bindActionCreators(actions, dispatch)
 }
 
-export default connect(stateToProps, dispatchToProps)(TestPage)
+export default connect(stateToProps, dispatchToProps)(TestPageOfflineHOC)

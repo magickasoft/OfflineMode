@@ -18,8 +18,8 @@ export const allUsers = gql`
     }`;
 
 export const getUserById = gql`
-    query getUserById($u_id: Int!) {
-      user(uid: $u_id) {
+    query getUserById($uid: Int!) {
+      user(uid: $uid) {
         uid
         name
       }
