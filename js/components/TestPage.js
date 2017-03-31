@@ -17,6 +17,8 @@ import NavigationBar from 'react-native-navbar'
 import BackButton from './IntroNav/BackButton'
 import NavTitle from './IntroNav/NavTitle'
 
+import { users } from '../queries/big_data';
+
 // import ClapitLoading from '../ClapitLoading'
 
 const emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -31,7 +33,8 @@ export default class TestPage extends Component {
             confirmPassword:'',
             visibleHeight: Dimensions.get('window').height,
             keyboardOpen: false,
-            signUp: props.signUp
+            signUp: props.signUp,
+
         }
         // for time's sake, converting from navigator.push to navigationPush
         this.navigator = {
@@ -254,6 +257,9 @@ export default class TestPage extends Component {
                                 : <Text style={styles.header}>{'None data'}</Text>
 
                             }
+                            {users.map((user) => (
+                                <Text style={styles.header} key={user.login.username}>{`${user.name.first.toUpperCase()} ${user.name.last.toUpperCase()}`}</Text>
+                            ))}
                             {
                                // this._renderEmailSignupLogin.bind(this)(signUp)
                             }

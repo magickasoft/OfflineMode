@@ -4,16 +4,21 @@ import gql from 'graphql-tag'
 
 export const allUsers = gql`
     query allUsers {
-        users {
-          uid
-          name
-          fullname
-          lastname
-          city {
-            tid
+        users(limit: 50) {
+            uid
             name
-            fias_aoguid
-          }
+            fullname
+            lastname
+            firstname
+            mail
+            phones
+            birthday
+            photo_url(style: avatar)
+            city {
+                tid
+                name
+                fias_aoguid
+            }
         }
     }`;
 
