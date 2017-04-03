@@ -4,15 +4,18 @@ import {
     Text,
     Image,
     ScrollView,
+    ListView,
     TouchableOpacity,
     TouchableWithoutFeedback,
     Dimensions,
     WebView,
     NativeModules,
     Animated,
-    Button,
+    //Button,
 } from 'react-native'
 
+import { List, ListItem, Button } from 'react-native-elements';
+import GiftedSpinner from 'react-native-gifted-spinner';
 // import apolloClient from  '../../../js/apolloConfig'
 
 
@@ -41,17 +44,20 @@ import ImageButton from '../IntroNav/ImageButton'
 import NavTitles from '../IntroNav/NavTitle'
 
 // import Button from 'react-native-button'
-
+import _ from 'lodash'
 
 class FeedItem extends React.Component {
 
-    constructor(props){
-        super(props);
+    constructor(props, context){
+        super(props, context);
 
         const { navigationPush, navigationPop, navigationReplace } = props;
         this.state = {
             anim : new Animated.Value(0),
-            showFlashOverlay: false
+            showFlashOverlay: false,
+            dataSource: new ListView.DataSource({
+                rowHasChanged: this.rowHasChanged.bind(this),
+            }),
         };
         // for time's sake, converting from navigator.push to navigationPush
         this.navigator = {
@@ -70,7 +76,24 @@ class FeedItem extends React.Component {
             }
         }
     }
+    shouldComponentUpdate(nextProps, nextState){
+        return true;
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            dataSource: this.getUpdatedDataSource(nextProps),
+        });
+    }
+    getUpdatedDataSource(props) {
+        const { data } = props;
+        let rows = data.users ? data.users : [];
+        let ids = rows.map((obj, index) => index);
 
+        return this.state.dataSource.cloneWithRows(rows, ids);
+    }
+    rowHasChanged(r1, r2) {
+        return JSON.stringify(r1) !== JSON.stringify(r2);
+    }
     _onImagePress = (item) => () => {
         const { featured, id } = item
 
@@ -435,14 +458,40 @@ class FeedItem extends React.Component {
                           color="#841584"
                           accessibilityLabel="Ok!"
                       />
-                      { data ? data.loading ? <Text style={styles.header}>{'Loading'}</Text>
+                      { data ? data.loading ?
+                          /*<Text style={styles.header}>{'Loading'}</Text>*/
+                          <GiftedSpinner />
                               :
                               data.users ?
-                                  data.users.map(user => (
+                                  /*data.users.map(user => (
                                   <TouchableOpacity key={user.uid} style={styles.touchableOpacity} onPress={this.onPushPage.bind(this,{ name: 'TestPageContainer', props: {uid: parseInt(user.uid)}})}>
                                     <Text style={styles.header}>{user.name}</Text>
                                   </TouchableOpacity>
-                                  )) : <Text style={styles.header}>{'None'}</Text>
+                                  )) */
+                                  data.users.map(user => (
+                                      <ListItem
+                                          key={user.uid}
+                                          roundAvatar
+                                          avatar={{ uri: user.photo_url ? user.photo_url : null }}
+                                          title={`${user.firstname.toUpperCase()} ${user.lastname.toUpperCase()}`}
+                                          subtitle={user.mail}
+                                          onPress={this.onPushPage.bind(this,{ name: 'TestPageContainer', props: {uid: parseInt(user.uid)}})}
+                                      />
+                                  ))
+                                  /*<ListView
+                                      dataSource={this.state.dataSource}
+                                      renderRow={(user) => (
+                                          <ListItem
+                                              key={user.uid}
+                                              roundAvatar
+                                              avatar={{ uri: user.photo_url ? user.photo_url : null }}
+                                              title={`${user.firstname.toUpperCase()} ${user.lastname.toUpperCase()}`}
+                                              subtitle={user.mail}
+                                              onPress={this.onPushPage.bind(this,{ name: 'TestPageContainer', props: {uid: parseInt(user.uid)}})}
+                                          />
+                                      )}
+                                  />*/
+                                  : <Text style={styles.header}>{'None'}</Text>
                           : <Text style={styles.header}>{'None data'}</Text>
 
                       }
